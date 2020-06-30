@@ -1,6 +1,25 @@
 {% extends 'tasks/mainpage.html' %}
+{% load widget_tweaks %}
 {% block body %}
 <style type="text/css">
+	.create{
+		width: 80%;
+		height: 60px;
+		border-width: 1px;
+		margin-top: 15px;
+		margin-left: 25px;
+	}
+
+	.btn-circle {
+ 		border-radius: 50%;
+ 		box-shadow: 1px 0px 5px 0px rgba(0,0,0,0.75);
+ 		background: #0b6099;
+ 		font-size: 25px;
+ 		color: white;
+ 		margin-top: 15px;
+		margin-left: 20px;
+	}
+	
 	.task{
 		margin-top:2px;
 		margin-bottom: 2px;
@@ -23,19 +42,20 @@
 	<div class="col-sm-3"></div>
 	<div class="col-sm-6">
 		<div class="card" align="center" style="box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);border-radius: 3px;">
-			<div class="card-header"><h3>TODO</h3></div>
+			<div class="card-header"><h2>----->TODO<-----</h2></div>
 
 <form method="POST" action="{% url 'index' %}">
 	{% csrf_token %}
-	{{form.title}}
+	{% render_field form.title class="create float-left" placeholder='Enter your task'%}
+	
 
-	<input type="submit" name="create" class="btn btn-warning">
+	<input type="submit" name="create" value="+" class="btn btn-circle btn-lg float-left">
 </form>
 {% for task in tasks %}
 
 	<div class="task">
 		{% if task.complete == True %}
-		<p><strike>{{task}}</strike></p>
+		<strike>{{task}}</strike>
 		{% else %}
 		<span>{{task}}</span>
 		{% endif %}

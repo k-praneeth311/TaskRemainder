@@ -1,6 +1,17 @@
-<h3>update task</h3>
+{% extends 'tasks/mainpage.html' %}
+{% block body %}
+<div class="row">
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<div class="card" align="center" style="box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);border-radius: 3px; margin-top: 20%">
+			<div class="card-header"><h3>Update</h3></div>
 <form method="POST" action="">
 	{% csrf_token %}
 	{{form}}
-<input type="submit" name="update">
+<input type="submit" name="update" class="btn btn-warning">
 </form>
+</div>
+	</div>
+	<div class="col-sm-3"></div>
+	</div>
+{% endblock %}

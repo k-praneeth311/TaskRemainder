@@ -1,7 +1,21 @@
-<h3>are you sure want to delete "{{item}}"?</h3>
-<a href="{% url 'index' %}"><button>cancel</button></a>
+{% extends 'tasks/mainpage.html' %}
+{% block body %}
+<div class="row">
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<div class="card" align="center" style="box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);border-radius: 3px; margin-top: 20%">
+			
+<h3 style=" margin-bottom: 20px;">are you sure want to delete "{{item}}"?</h3>
+
 <form method="POST" action="">
 	{% csrf_token %}
-	<input type="submit" name="confirm" value='delete'> 
+	<a href="{% url 'index' %}" class="btn btn-primary" style="width: 90%">cancel</a><br><br>
+	<input type="submit" name="confirm" value='delete' class="btn btn-danger" style="width: 90%; margin-bottom: 20px;"> 
 	
 </form>
+</form>
+</div>
+	</div>
+	<div class="col-sm-3"></div>
+	</div>
+{% endblock %}
