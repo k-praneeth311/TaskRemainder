@@ -1,0 +1,52 @@
+{% extends 'tasks/mainpage.html' %}
+{% block body %}
+<style type="text/css">
+	.task{
+		margin-top:2px;
+		margin-bottom: 2px;
+		padding-top: 17px;
+		width: 100%;
+  		height: 55px;
+  		font-family: verdana;
+  		font-size: 20px;
+  		box-shadow: 0px 0.4px 0px 0px rgba(0,0,0,0.75);
+  		border-radius: 3px;
+	}
+	.task:hover{
+		width: 100%;
+  		height: 100px;
+		box-shadow: 2px 1px 15px 0px rgba(0,0,0,0.75);
+  		border-radius: 3px;
+	}
+</style>
+	<div class="row">
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<div class="card" align="center" style="box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);border-radius: 3px;">
+			<div class="card-header"><h3>TODO</h3></div>
+
+<form method="POST" action="{% url 'index' %}">
+	{% csrf_token %}
+	{{form.title}}
+
+	<input type="submit" name="create" class="btn btn-warning">
+</form>
+{% for task in tasks %}
+
+	<div class="task">
+		{% if task.complete == True %}
+		<p><strike>{{task}}</strike></p>
+		{% else %}
+		<span>{{task}}</span>
+		{% endif %}
+		<a href="{% url 'update' task.id %}" class="btn btn-sm btn-info float-right" style="">update</a>
+		<a href="{% url 'delete' task.id %}" class="btn btn-sm btn-danger float-right" style="margin-right:16px;">delete</a>
+	</div>
+
+{% endfor %}
+
+	</div>
+	</div>
+	<div class="col-sm-3"></div>
+	</div>
+{% endblock %}

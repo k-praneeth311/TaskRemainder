@@ -1,0 +1,33 @@
+{% extends 'Products/mainpage.html' %}
+{% block body %}
+	<div class="row">
+	<div class="col-sm-3">
+		
+	</div>
+
+	<div class="col-sm-6">
+		<div class="card">
+		{% if messages %}
+			{% for i in messages %}
+			<div class='alert alert-{{ i.tags }}'>{{ i }}</div>
+
+			{% endfor %}
+			{% endif %}
+		<h3>Updata your password</h3>
+		<form action="{% url 'change' %}" method="POST">
+			{% csrf_token %}
+			OldPass:<input type="password" name="oldpass" class="form-control"><br><br>
+			NewPass:<input type="password" name="newpass" class="form-control"><br><br>
+			ConPass:<input type="password" name="conpass" class="form-control"><br>
+			<input type="submit" name="Reset" class="form-control">
+
+		</form>
+	</div>
+	</div>
+	<div class="col-sm-3">
+		
+	</div>
+	
+</div>
+
+{% endblock %}

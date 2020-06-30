@@ -1,0 +1,25 @@
+{% extends 'Products/mainpage.html' %}
+{% block body %}
+	<div class="row">
+	<div class="col-sm-3">
+		
+	</div>
+
+	<div class="col-sm-6">
+		<div class="card">
+		<h3>Contact Us</h3>
+<form action="{% url 'contact' %}" method="POST" align='center'>
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit" name="send" value='send' class="form-control">
+
+</form>
+</div>
+	</div>
+	<div class="col-sm-3">
+		
+	</div>
+	
+</div>
+
+{% endblock %}
