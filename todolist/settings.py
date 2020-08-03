@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tasks',
     'widget_tweaks',
+    'user',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -78,22 +80,22 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'d48drbr5amk65t',
-        'USER':'xjsdqbqrlafgmg',
-        'PASSWORD':'e89e2891bd47316222fe5bd80e054eb8548f9db9133188b41687a0aa0e05965f',
-        'HOST':'ec2-54-234-28-165.compute-1.amazonaws.com',
-        'PORT':'5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME':'d48drbr5amk65t',
+#         'USER':'xjsdqbqrlafgmg',
+#         'PASSWORD':'e89e2891bd47316222fe5bd80e054eb8548f9db9133188b41687a0aa0e05965f',
+#         'HOST':'ec2-54-234-28-165.compute-1.amazonaws.com',
+#         'PORT':'5432',
+#     }
+# }
 
 
 # Password validation
@@ -133,5 +135,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK='bootstrap4'
+
+LOGIN_REDIRECT_URL = 'home'
+
+LOGIN_URL = 'login'
+
 django_heroku.settings(locals()) 
 

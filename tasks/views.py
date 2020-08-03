@@ -3,8 +3,11 @@ from django.http import HttpResponse
 from tasks.forms import *
 from tasks.models import *
 # Create your views here.
-def index(request):
-	tasks=Task.objects.all()
+def home(request):
+	return render(request,'tasks/mainpage.html')
+
+def index(request,fk):
+	tasks=Task.objects.filter(uid=fk)
 	form=TaskForm()
 	if request.method =='POST':
 		form=TaskForm(request.POST)
